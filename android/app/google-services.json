@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "624890762229",
+    "project_id": "crimson-41a89",
+    "storage_bucket": "crimson-41a89.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:624890762229:android:0087c12f1c9ee5d40906bc",
+        "android_client_info": {
+          "package_name": "com.example.crimson"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAJWrl9RbZ8xHoTglY7jLTkpKS1njjnGfA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
