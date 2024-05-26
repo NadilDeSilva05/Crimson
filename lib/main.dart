@@ -1,4 +1,4 @@
-
+import 'package:crimson/WelcomePage/welcome_page.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -13,6 +13,7 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+  // ignore: use_super_parameters
   const MyApp({Key? key}) : super(key: key);
 
   @override
@@ -26,6 +27,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-// ignore: non_constant_identifier_names
-WelcomePage() {}
