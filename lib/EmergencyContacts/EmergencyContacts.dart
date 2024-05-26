@@ -28,9 +28,7 @@ class EmergencyContactScreen extends StatelessWidget {
         backgroundColor: Colors.black,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back, color: Colors.white),
-          onPressed: () {
-            // Add back button functionality here
-          },
+          onPressed: () {},
         ),
         title: const Text('Emergency Contacts',
             style: TextStyle(color: Colors.white)),
@@ -64,7 +62,7 @@ class EmergencyContactScreen extends StatelessWidget {
               child: Column(
                 children: [
                   Image.asset(
-                    'images/logo.jpg', // Replace with your image asset
+                    'images/logo.jpg',
                     height: 50,
                   ),
                   const SizedBox(height: 8),
