@@ -28,7 +28,9 @@ class EmergencyContactScreen extends StatelessWidget {
         backgroundColor: Colors.black,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back, color: Colors.white),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
         ),
         title: const Text('Emergency Contacts',
             style: TextStyle(color: Colors.white)),
@@ -40,10 +42,26 @@ class EmergencyContactScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const Divider(color: Colors.white),
-            buildEmergencyContact("Ambulance", "Call 1234567890"),
-            buildEmergencyContact("Fire Department", "Call 0987654321"),
-            buildEmergencyContact("Police", "Call 1122334455"),
-            buildEmergencyContact("Poison Control", "Call 5566778899"),
+            buildEmergencyContact(
+              Icons.local_hospital,
+              "Ambulance",
+              "Call 1234567890",
+            ),
+            buildEmergencyContact(
+              Icons.fire_truck,
+              "Fire Department",
+              "Call 0987654321",
+            ),
+            buildEmergencyContact(
+              Icons.local_police,
+              "Police",
+              "Call 1122334455",
+            ),
+            buildEmergencyContact(
+              Icons.warning,
+              "Poison Control",
+              "Call 5566778899",
+            ),
             const SizedBox(height: 20),
             const Text(
               'Instructions:',
@@ -80,21 +98,33 @@ class EmergencyContactScreen extends StatelessWidget {
     );
   }
 
-  Widget buildEmergencyContact(String title, String number) {
+  Widget buildEmergencyContact(IconData icon, String title, String number) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      child: Row(
         children: [
-          Text(
-            title,
-            style: const TextStyle(
-                color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold),
+          Icon(
+            icon,
+            color: Colors.white,
+            size: 30,
           ),
-          const SizedBox(height: 4),
-          Text(
-            number,
-            style: const TextStyle(color: Colors.white, fontSize: 16),
+          const SizedBox(width: 10),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                title,
+                style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 4),
+              Text(
+                number,
+                style: const TextStyle(color: Colors.white, fontSize: 16),
+              ),
+            ],
           ),
         ],
       ),
