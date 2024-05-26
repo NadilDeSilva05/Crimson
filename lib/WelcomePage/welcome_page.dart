@@ -23,7 +23,7 @@ class WelcomePage extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
-                  color: Color.fromARGB(255, 117, 44, 39),
+                  color: Color.fromARGB(255, 136, 9, 9),
                 ),
               ),
               SizedBox(height: 20),
