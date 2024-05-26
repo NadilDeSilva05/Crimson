@@ -3,6 +3,8 @@ import 'package:device_preview/device_preview.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
+import 'UserProfile/UserProfile.dart';
+
 void main() {
   runApp(
     DevicePreview(
@@ -23,7 +25,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.red,
       ),
-      home: WelcomePage(),
+      home: ProfileSummaryApp(),
     );
   }
 }

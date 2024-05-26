@@ -153,7 +153,3 @@ class ProfileSummaryScreen extends StatelessWidget {
     );
   }
 }
-
-void main() {
-  runApp(const ProfileSummaryApp());
-}
