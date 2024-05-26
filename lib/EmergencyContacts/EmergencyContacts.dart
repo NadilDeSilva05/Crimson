@@ -8,7 +8,7 @@ class EmergencyContact extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Crimson+',
+      title: 'Emergency Contacts',
       theme: ThemeData(
         primarySwatch: Colors.red,
         scaffoldBackgroundColor: Colors.black,
@@ -64,7 +64,7 @@ class EmergencyContactScreen extends StatelessWidget {
               child: Column(
                 children: [
                   Image.asset(
-                    'assets/logo.png', // Replace with your image asset
+                    'images/logo.jpg', // Replace with your image asset
                     height: 50,
                   ),
                   const SizedBox(height: 8),
