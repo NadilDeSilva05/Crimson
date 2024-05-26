@@ -1,84 +1,104 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 
 class EmergencyContact extends StatelessWidget {
-  const EmergencyContact({Key? key});
+  const EmergencyContact({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Crimson+',
+      theme: ThemeData(
+        primarySwatch: Colors.red,
+        scaffoldBackgroundColor: Colors.black,
+      ),
+      home: const EmergencyContactScreen(),
+    );
+  }
+}
+
+class EmergencyContactScreen extends StatelessWidget {
+  const EmergencyContactScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Emergency Contact'),
-        backgroundColor: Colors.redAccent, // Set app bar color
+        backgroundColor: Colors.black,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back, color: Colors.white),
+          onPressed: () {
+            // Add back button functionality here
+          },
+        ),
+        title: const Text('Emergency Contacts',
+            style: TextStyle(color: Colors.white)),
+        centerTitle: true,
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
-              'In case of emergency, please contact:',
-              style: TextStyle(fontSize: 18),
-            ),
-            const SizedBox(height: 10),
-            ElevatedButton(
-              onPressed: () {
-                // Add functionality to call emergency contact number
-              },
-              style: ElevatedButton.styleFrom(
-                backgroundColor:
-                    Colors.black, // Set button background color to black
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(0.0), // Square shape
-                ),
-              ),
-              child: const Text(
-                'Emergency Number 1',
-                style:
-                    TextStyle(color: Colors.white), // Set text color to white
-              ),
-            ),
-            const SizedBox(height: 20), // Increase the gap between buttons
-            ElevatedButton(
-              onPressed: () {
-                // Add functionality to call emergency contact number
-              },
-              style: ElevatedButton.styleFrom(
-                backgroundColor:
-                    Colors.black, // Set button background color to black
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(0.0), // Square shape
-                ),
-              ),
-              child: const Text(
-                'Emergency Number 2',
-                style:
-                    TextStyle(color: Colors.white), // Set text color to white
-              ),
-            ),
+            const Divider(color: Colors.white),
+            buildEmergencyContact("Ambulance", "Call 1234567890"),
+            buildEmergencyContact("Fire Department", "Call 0987654321"),
+            buildEmergencyContact("Police", "Call 1122334455"),
+            buildEmergencyContact("Poison Control", "Call 5566778899"),
             const SizedBox(height: 20),
             const Text(
               'Instructions:',
-              style: TextStyle(fontSize: 18),
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold),
             ),
+            const SizedBox(height: 10),
             const Text(
-              '1. Stay calm and assess the situation.',
+              'In case of an emergency, contact the appropriate service immediately. Provide them with clear and concise information about the situation and your location. Remain calm and follow any instructions given by the emergency personnel.',
+              style: TextStyle(color: Colors.white, fontSize: 16),
             ),
-            const Text(
-              '2. Administer first aid if trained to do so.',
-            ),
-            const Text(
-              '3. Contact emergency services immediately.',
+            const Spacer(),
+            Center(
+              child: Column(
+                children: [
+                  Image.asset(
+                    'assets/logo.png', // Replace with your image asset
+                    height: 50,
+                  ),
+                  const SizedBox(height: 8),
+                  const Text('CRIMSON +',
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold)),
+                ],
+              ),
             ),
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.of(context).pop();
-        },
-        tooltip: 'Back',
-        backgroundColor: Colors.redAccent,
-        child: const Icon(Icons.arrow_back), // Set FAB color
+    );
+  }
+
+  Widget buildEmergencyContact(String title, String number) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            title,
+            style: const TextStyle(
+                color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold),
+          ),
+          const SizedBox(height: 4),
+          Text(
+            number,
+            style: const TextStyle(color: Colors.white, fontSize: 16),
+          ),
+        ],
       ),
     );
   }
