@@ -9,7 +9,7 @@ class ProfileSummaryApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Profile Summery',
+      title: 'Profile Summary',
       theme: ThemeData(
         primarySwatch: Colors.blue,
         scaffoldBackgroundColor: Colors.black,
@@ -33,8 +33,10 @@ class ProfileSummaryScreen extends StatelessWidget {
             Navigator.of(context).pop();
           },
         ),
-        title: const Text('Profile Summary',
-            style: TextStyle(color: Colors.white)),
+        title: const Text(
+          'Profile Summary',
+          style: TextStyle(color: Colors.white),
+        ),
         centerTitle: true,
       ),
       body: Padding(
@@ -49,23 +51,38 @@ class ProfileSummaryScreen extends StatelessWidget {
               return const Center(child: CircularProgressIndicator());
             } else if (snapshot.hasError) {
               return const Center(
-                  child: Text('Error loading profile',
-                      style: TextStyle(color: Colors.white)));
+                child: Text(
+                  'Error loading profile',
+                  style: TextStyle(color: Colors.white),
+                ),
+              );
             } else if (!snapshot.hasData || !snapshot.data!.exists) {
               return const Center(
-                  child: Text('No profile found',
-                      style: TextStyle(color: Colors.white)));
+                child: Text(
+                  'No profile found',
+                  style: TextStyle(color: Colors.white),
+                ),
+              );
             } else {
               var userData = snapshot.data!.data() as Map<String, dynamic>;
               return Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  buildProfileDetail(
-                      Icons.person, "Full Name", userData['fullName'] ?? ''),
-                  buildProfileDetail(
-                      Icons.email, "Email", userData['email'] ?? ''),
-                  buildProfileDetail(Icons.phone, "Phone Number",
-                      userData['phoneNumber'] ?? ''),
+                  buildProfileCard(
+                    Icons.person,
+                    "Full Name",
+                    userData['fullName'] ?? '',
+                  ),
+                  buildProfileCard(
+                    Icons.email,
+                    "Email",
+                    userData['email'] ?? '',
+                  ),
+                  buildProfileCard(
+                    Icons.phone,
+                    "Phone Number",
+                    userData['phoneNumber'] ?? '',
+                  ),
                   const Spacer(),
                   Center(
                     child: Column(
@@ -75,11 +92,14 @@ class ProfileSummaryScreen extends StatelessWidget {
                           height: 50,
                         ),
                         const SizedBox(height: 8),
-                        const Text('CRIMSON +',
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 24,
-                                fontWeight: FontWeight.bold)),
+                        const Text(
+                          'CRIMSON +',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 24,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
                       ],
                     ),
                   ),
@@ -92,36 +112,48 @@ class ProfileSummaryScreen extends StatelessWidget {
     );
   }
 
-  Widget buildProfileDetail(IconData icon, String title, String detail) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8.0),
-      child: Row(
-        children: [
-          Icon(
-            icon,
-            color: Colors.white,
-            size: 30,
-          ),
-          const SizedBox(width: 10),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                title,
-                style: const TextStyle(
+  Widget buildProfileCard(IconData icon, String title, String detail) {
+    return Card(
+      color: Colors.grey[850],
+      margin: const EdgeInsets.symmetric(vertical: 8.0),
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Row(
+          children: [
+            Icon(
+              icon,
+              color: Colors.white,
+              size: 30,
+            ),
+            const SizedBox(width: 16),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  title,
+                  style: const TextStyle(
                     color: Colors.white,
                     fontSize: 18,
-                    fontWeight: FontWeight.bold),
-              ),
-              const SizedBox(height: 4),
-              Text(
-                detail,
-                style: const TextStyle(color: Colors.white, fontSize: 16),
-              ),
-            ],
-          ),
-        ],
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const SizedBox(height: 4),
+                Text(
+                  detail,
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 16,
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
+}
+
+void main() {
+  runApp(const ProfileSummaryApp());
 }
