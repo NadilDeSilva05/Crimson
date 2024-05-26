@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 
 class EmergencyContact extends StatelessWidget {
-  const EmergencyContact({super.key});
+  const EmergencyContact({Key? key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Emergency Contact'),
+        backgroundColor: Colors.redAccent, // Set app bar color
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -23,13 +24,36 @@ class EmergencyContact extends StatelessWidget {
               onPressed: () {
                 // Add functionality to call emergency contact number
               },
-              child: Text('Emergency Number 1'),
+              style: ElevatedButton.styleFrom(
+                backgroundColor:
+                    Colors.black, // Set button background color to black
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(0.0), // Square shape
+                ),
+              ),
+              child: const Text(
+                'Emergency Number 1',
+                style:
+                    TextStyle(color: Colors.white), // Set text color to white
+              ),
             ),
+            const SizedBox(height: 20), // Increase the gap between buttons
             ElevatedButton(
               onPressed: () {
                 // Add functionality to call emergency contact number
               },
-              child: const Text('Emergency Number 2'),
+              style: ElevatedButton.styleFrom(
+                backgroundColor:
+                    Colors.black, // Set button background color to black
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(0.0), // Square shape
+                ),
+              ),
+              child: const Text(
+                'Emergency Number 2',
+                style:
+                    TextStyle(color: Colors.white), // Set text color to white
+              ),
             ),
             const SizedBox(height: 20),
             const Text(
@@ -53,7 +77,8 @@ class EmergencyContact extends StatelessWidget {
           Navigator.of(context).pop();
         },
         tooltip: 'Back',
-        child: const Icon(Icons.arrow_back),
+        backgroundColor: Colors.redAccent,
+        child: const Icon(Icons.arrow_back), // Set FAB color
       ),
     );
   }
