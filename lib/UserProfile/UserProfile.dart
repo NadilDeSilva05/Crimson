@@ -34,7 +34,7 @@ class ProfileSummaryScreen extends StatelessWidget {
           },
         ),
         title: const Text(
-          'Profile Summary',
+          'Profile summary',
           style: TextStyle(color: Colors.white),
         ),
         centerTitle: true,
