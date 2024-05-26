@@ -1,3 +1,4 @@
+import 'package:crimson/SignUp/SignUpPage.dart';
 import 'package:flutter/material.dart';
 
 class WelcomePage extends StatelessWidget {
@@ -47,6 +48,10 @@ class WelcomePage extends StatelessWidget {
               ElevatedButton(
                 onPressed: () {
                   // Handle button press
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => SignUpPage()),
+                  );
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.black,
