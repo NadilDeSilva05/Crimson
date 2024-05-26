@@ -12,7 +12,7 @@ class ProfileSummaryApp extends StatelessWidget {
       title: 'Profile Summary',
       theme: ThemeData(
         primarySwatch: Colors.blue,
-        scaffoldBackgroundColor: Colors.black,
+        scaffoldBackgroundColor: const Color.fromARGB(255, 24, 24, 24),
       ),
       home: const ProfileSummaryScreen(),
     );
