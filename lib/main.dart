@@ -26,4 +26,5 @@ class MyApp extends StatelessWidget {
   }
 }
 
+// ignore: non_constant_identifier_names
 WelcomePage() {}
