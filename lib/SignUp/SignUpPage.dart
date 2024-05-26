@@ -1,7 +1,51 @@
 import 'package:crimson/Login/LogInPage.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class SignUpPage extends StatelessWidget {
+  final TextEditingController fullNameController = TextEditingController();
+  final TextEditingController phoneNumberController = TextEditingController();
+  final TextEditingController emailAddressController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  Future<void> signUp(BuildContext context) async {
+    String fullName = fullNameController.text;
+    String phoneNumber = phoneNumberController.text;
+    String emailAddress = emailAddressController.text;
+    String password = passwordController.text;
+
+    try {
+      // Create a new user with Firebase Authentication
+      UserCredential userCredential =
+          await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: emailAddress,
+        password: password,
+      );
+
+      // Get the user ID
+      String uid = userCredential.user!.uid;
+
+      // Store additional user data in Firestore
+      await FirebaseFirestore.instance.collection('users').doc(uid).set({
+        'full_name': fullName,
+        'phone_number': phoneNumber,
+        'email_address': emailAddress,
+      });
+
+      // Navigate to Sign In page
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => LoginPage()),
+      );
+    } catch (e) {
+      // Handle errors (e.g., email already in use, weak password)
+      print(e);
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Failed to sign up: ${e.toString()}')),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,6 +78,7 @@ class SignUpPage extends StatelessWidget {
             ),
             SizedBox(height: 30),
             TextField(
+              controller: fullNameController,
               decoration: InputDecoration(
                 filled: true,
                 fillColor: Colors.white,
@@ -45,6 +90,7 @@ class SignUpPage extends StatelessWidget {
             ),
             SizedBox(height: 20),
             TextField(
+              controller: phoneNumberController,
               decoration: InputDecoration(
                 filled: true,
                 fillColor: Colors.white,
@@ -56,6 +102,7 @@ class SignUpPage extends StatelessWidget {
             ),
             SizedBox(height: 20),
             TextField(
+              controller: emailAddressController,
               decoration: InputDecoration(
                 filled: true,
                 fillColor: Colors.white,
@@ -67,6 +114,7 @@ class SignUpPage extends StatelessWidget {
             ),
             SizedBox(height: 20),
             TextField(
+              controller: passwordController,
               obscureText: true,
               decoration: InputDecoration(
                 filled: true,
@@ -80,8 +128,9 @@ class SignUpPage extends StatelessWidget {
             SizedBox(height: 30),
             Center(
               child: ElevatedButton(
-                onPressed: () {
+                onPressed: () async {
                   // Handle sign up button press
+                  await signUp(context);
                 },
                 style: ElevatedButton.styleFrom(
                   foregroundColor: Colors.black,
