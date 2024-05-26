@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 
 import 'WelcomePage/welcome_page.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(
     DevicePreview(
       enabled: !kReleaseMode,
