@@ -1,106 +1,59 @@
-// ignore_for_file: file_names
-
 import 'package:flutter/material.dart';
 
-import 'package:device_preview/device_preview.dart';
-import 'package:flutter/foundation.dart';
-
-void main() async {
-  runApp(
-    DevicePreview(
-      enabled: !kReleaseMode,
-      builder: (context) =>
-          const BloodDonorScreen(), // Wrap your main app with DevicePreview
-    ),
-  );
-}
-
-class BloodDonorScreen extends StatelessWidget {
-  const BloodDonorScreen({super.key});
+class EmergencyContact extends StatelessWidget {
+  const EmergencyContact({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Blood Donor App'),
+        title: const Text('Emergency Contact'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
+          children: [
             const Text(
-              'Emergency Contact Information',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              'In case of emergency, please contact:',
+              style: TextStyle(fontSize: 18),
             ),
             const SizedBox(height: 10),
-            const EmergencyContactForm(),
-            const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                // Implement action on button press if needed
+                // Add functionality to call emergency contact number
               },
-              child: const Text('Save'),
+              child: Text('Emergency Number 1'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                // Add functionality to call emergency contact number
+              },
+              child: const Text('Emergency Number 2'),
+            ),
+            const SizedBox(height: 20),
+            const Text(
+              'Instructions:',
+              style: TextStyle(fontSize: 18),
+            ),
+            const Text(
+              '1. Stay calm and assess the situation.',
+            ),
+            const Text(
+              '2. Administer first aid if trained to do so.',
+            ),
+            const Text(
+              '3. Contact emergency services immediately.',
             ),
           ],
         ),
       ),
-    );
-  }
-}
-
-class EmergencyContactForm extends StatefulWidget {
-  const EmergencyContactForm({super.key});
-
-  @override
-  // ignore: library_private_types_in_public_api
-  _EmergencyContactFormState createState() => _EmergencyContactFormState();
-}
-
-class _EmergencyContactFormState extends State<EmergencyContactForm> {
-  final _formKey = GlobalKey<FormState>();
-  final _nameController = TextEditingController();
-  final _phoneController = TextEditingController();
-  final _relationshipController = TextEditingController();
-
-  @override
-  Widget build(BuildContext context) {
-    return Form(
-      key: _formKey,
-      child: Column(
-        children: <Widget>[
-          TextFormField(
-            controller: _nameController,
-            decoration: const InputDecoration(labelText: 'Name'),
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return 'Please enter a name';
-              }
-              return null;
-            },
-          ),
-          TextFormField(
-            controller: _phoneController,
-            decoration: const InputDecoration(labelText: 'Phone Number'),
-            keyboardType: TextInputType.phone,
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return 'Please enter a phone number';
-              }
-              return null;
-            },
-          ),
-          TextFormField(
-            controller: _relationshipController,
-            decoration: const InputDecoration(labelText: 'Relationship'),
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return 'Please enter a relationship';
-              }
-              return null;
-            },
-          ),
-        ],
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.of(context).pop();
+        },
+        tooltip: 'Back',
+        child: const Icon(Icons.arrow_back),
       ),
     );
   }
