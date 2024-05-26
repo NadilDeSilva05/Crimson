@@ -13,7 +13,7 @@ class WelcomePage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.asset(
-                'assets/crimson_logo.png', // Ensure the logo asset is in the correct path
+                'assets/welcomelogo.png', // Ensure the logo asset is in the correct path
                 height: 100,
               ),
               SizedBox(height: 20),
