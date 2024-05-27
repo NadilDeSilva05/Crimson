@@ -38,7 +38,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.red,
       ),
-      home: const HealthTips(),
+      home: const HomePage(),
       //home: WelcomePage(),
       debugShowCheckedModeBanner: false,
     );

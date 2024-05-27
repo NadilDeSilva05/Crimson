@@ -1,4 +1,6 @@
-import 'package:flutter/material.dart';
+import 'package:crimson/EmergencyContacts/EmergencyContacts.dart';
+import 'package:crimson/Health%20Tips/healthtips.dart';
+import 'package:flutter/material.dart'; // Make sure to create and import healthtips.dart
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -73,9 +75,23 @@ class HomePage extends StatelessWidget {
             child: GridView.count(
               crossAxisCount: 2,
               children: [
-                _buildGridItem(Icons.person, 'Donor Profile'),
-                _buildGridItem(Icons.lightbulb, 'Health Tips'),
-                _buildGridItem(Icons.phone, 'Emergency Contacts'),
+                _buildGridItem(Icons.person, 'Donor Profile', () {
+                  // Handle Donor Profile button press
+                }),
+                _buildGridItem(Icons.lightbulb, 'Health Tips', () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const HealthTips()),
+                  );
+                }),
+                _buildGridItem(Icons.phone, 'Emergency Contacts', () {
+                  // Handle Emergency Contacts button press
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const EmergencyContact()),
+                  );
+                }),
               ],
             ),
           ),
@@ -84,13 +100,15 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Widget _buildGridItem(IconData icon, String title) {
+  Widget _buildGridItem(IconData icon, String title, VoidCallback onPressed) {
     return Padding(
       padding: const EdgeInsets.all(16.0),
-      child: Container(
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(16.0),
+      child: ElevatedButton(
+        onPressed: onPressed,
+        style: ElevatedButton.styleFrom(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(16.0),
+          ),
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -106,6 +124,7 @@ class HomePage extends StatelessWidget {
               style: const TextStyle(
                 fontSize: 16.0,
                 fontWeight: FontWeight.bold,
+                color: Colors.black,
               ),
             ),
           ],
@@ -118,5 +137,6 @@ class HomePage extends StatelessWidget {
 void main() {
   runApp(const MaterialApp(
     home: HomePage(),
+    debugShowCheckedModeBanner: false,
   ));
 }

@@ -156,5 +156,6 @@ class HealthTips extends StatelessWidget {
 void main() {
   runApp(const MaterialApp(
     home: HealthTips(),
+    debugShowCheckedModeBanner: false,
   ));
 }
