@@ -60,7 +60,7 @@ class LoginPage extends StatelessWidget {
               child: Column(
                 children: [
                   Image.asset(
-                    'assets/crimson_logo.png', // Add your logo asset here
+                    'images/mainlogo.png', // Add your logo asset here
                     height: 100,
                   ),
                   SizedBox(height: 20),

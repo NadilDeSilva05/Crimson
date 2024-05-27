@@ -89,7 +89,7 @@ class EmergencyContactScreen extends StatelessWidget {
               child: Column(
                 children: [
                   Image.asset(
-                    'welcomelogo.png',
+                    'images/mainlogo.png',
                     height: 50,
                   ),
                   const SizedBox(height: 8),
