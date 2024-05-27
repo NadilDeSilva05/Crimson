@@ -1,3 +1,4 @@
+import 'package:crimson/Homepage/homepage.dart';
 import 'package:crimson/firebase_options.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -36,7 +37,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.red,
       ),
-      home: WelcomePage(),
+      home: const HomePage(),
+      //home: WelcomePage(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
