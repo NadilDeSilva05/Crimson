@@ -1,5 +1,3 @@
-// ignore_for_file: file_names
-
 import 'package:crimson/Homepage/homepage.dart';
 import 'package:flutter/material.dart';
 //import 'main.dart'; // Import the main.dart file where HomePage is defined
