@@ -89,7 +89,7 @@ class HomePage extends StatelessWidget {
                 _buildGridItem(Icons.lightbulb, 'Health Tips', () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const HealthTips()),
+                    MaterialPageRoute(builder: (context) => HealthTips()),
                   );
                 }),
                 _buildGridItem(Icons.phone, 'Emergency Contacts', () {
@@ -97,7 +97,7 @@ class HomePage extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const EmergencyContact()),
+                        builder: (context) => EmergencyContact(userId: userId)),
                   );
                 }),
               ],

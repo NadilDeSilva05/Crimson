@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 //import 'main.dart'; // Import the main.dart file where HomePage is defined
 
 class EmergencyContact extends StatelessWidget {
-  const EmergencyContact({super.key});
+  final String userId;
+
+  const EmergencyContact({required this.userId, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -13,14 +15,17 @@ class EmergencyContact extends StatelessWidget {
         primarySwatch: Colors.red,
         scaffoldBackgroundColor: Colors.black,
       ),
-      home: const EmergencyContactScreen(),
+      home: EmergencyContactScreen(userId: userId),
       debugShowCheckedModeBanner: false,
     );
   }
 }
 
 class EmergencyContactScreen extends StatelessWidget {
-  const EmergencyContactScreen({super.key});
+  final String userId;
+
+  const EmergencyContactScreen({required this.userId, Key? key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -30,12 +35,9 @@ class EmergencyContactScreen extends StatelessWidget {
         leading: IconButton(
           icon: const Icon(Icons.arrow_back, color: Colors.white),
           onPressed: () {
-            Navigator.of(context).pushAndRemoveUntil(
-              MaterialPageRoute(
-                  builder: (context) => const HomePage(
-                        userId: '',
-                      )),
-              (Route<dynamic> route) => false,
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => HomePage(userId: userId)),
             );
           },
         ),
@@ -87,7 +89,7 @@ class EmergencyContactScreen extends StatelessWidget {
               child: Column(
                 children: [
                   Image.asset(
-                    'images/logo.jpg',
+                    'welcomelogo.png',
                     height: 50,
                   ),
                   const SizedBox(height: 8),

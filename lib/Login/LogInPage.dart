@@ -21,7 +21,7 @@ class LoginPage extends StatelessWidget {
       );
 
       // Navigate to Home page
-      Navigator.pushReplacement(
+      Navigator.push(
         context,
         MaterialPageRoute(
             builder: (context) => HomePage(userId: userCredential.user!.uid)),
