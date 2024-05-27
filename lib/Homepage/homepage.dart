@@ -1,5 +1,6 @@
 import 'package:crimson/EmergencyContacts/EmergencyContacts.dart';
 import 'package:crimson/Health%20Tips/healthtips.dart';
+import 'package:crimson/UserProfile/UserProfile.dart';
 import 'package:flutter/material.dart'; // Make sure to create and import healthtips.dart
 
 class HomePage extends StatelessWidget {
@@ -77,6 +78,11 @@ class HomePage extends StatelessWidget {
               children: [
                 _buildGridItem(Icons.person, 'Donor Profile', () {
                   // Handle Donor Profile button press
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const ProfileSummaryApp()),
+                  );
                 }),
                 _buildGridItem(Icons.lightbulb, 'Health Tips', () {
                   Navigator.push(
