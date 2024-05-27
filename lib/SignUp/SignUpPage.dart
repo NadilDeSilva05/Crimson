@@ -8,6 +8,7 @@ class SignUpPage extends StatelessWidget {
   final TextEditingController phoneNumberController = TextEditingController();
   final TextEditingController emailAddressController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+
   Future<void> signUp(BuildContext context) async {
     String fullName = fullNameController.text;
     String phoneNumber = phoneNumberController.text;
@@ -32,8 +33,8 @@ class SignUpPage extends StatelessWidget {
         'email_address': emailAddress,
       });
 
-      // Navigate to Sign In page
-      Navigator.push(
+      // Navigate to Login page
+      Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => LoginPage()),
       );
@@ -56,7 +57,6 @@ class SignUpPage extends StatelessWidget {
         leading: IconButton(
           icon: Icon(Icons.arrow_back, color: Colors.white),
           onPressed: () {
-            // Handle back button press
             Navigator.pop(context);
           },
         ),

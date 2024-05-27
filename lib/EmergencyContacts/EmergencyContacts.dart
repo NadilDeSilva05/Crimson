@@ -33,7 +33,10 @@ class EmergencyContactScreen extends StatelessWidget {
           icon: const Icon(Icons.arrow_back, color: Colors.white),
           onPressed: () {
             Navigator.of(context).pushAndRemoveUntil(
-              MaterialPageRoute(builder: (context) => const HomePage()),
+              MaterialPageRoute(
+                  builder: (context) => const HomePage(
+                        userId: '',
+                      )),
               (Route<dynamic> route) => false,
             );
           },

@@ -4,7 +4,8 @@ import 'package:crimson/UserProfile/UserProfile.dart';
 import 'package:flutter/material.dart'; // Make sure to create and import healthtips.dart
 
 class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+  final String userId;
+  const HomePage({required this.userId, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -81,7 +82,8 @@ class HomePage extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const ProfileSummaryApp()),
+                        builder: (context) =>
+                            ProfileSummaryApp(userId: userId)),
                   );
                 }),
                 _buildGridItem(Icons.lightbulb, 'Health Tips', () {
@@ -138,11 +140,4 @@ class HomePage extends StatelessWidget {
       ),
     );
   }
-}
-
-void main() {
-  runApp(const MaterialApp(
-    home: HomePage(),
-    debugShowCheckedModeBanner: false,
-  ));
 }

@@ -1,3 +1,4 @@
+import 'package:crimson/Homepage/homepage.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -8,7 +9,8 @@ class LoginPage extends StatelessWidget {
   Future<void> signIn(BuildContext context) async {
     try {
       // Sign in with email and password
-      await FirebaseAuth.instance.signInWithEmailAndPassword(
+      UserCredential userCredential =
+          await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: emailController.text,
         password: passwordController.text,
       );
@@ -16,6 +18,13 @@ class LoginPage extends StatelessWidget {
       // Show a success message
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Sign in successful')),
+      );
+
+      // Navigate to Home page
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+            builder: (context) => HomePage(userId: userCredential.user!.uid)),
       );
     } catch (e) {
       // Handle sign-in errors

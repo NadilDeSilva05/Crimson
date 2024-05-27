@@ -1,11 +1,11 @@
-// ignore_for_file: file_names
-
 import 'package:crimson/Homepage/homepage.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class ProfileSummaryApp extends StatelessWidget {
-  const ProfileSummaryApp({super.key});
+  final String userId;
+
+  const ProfileSummaryApp({required this.userId, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,14 +15,17 @@ class ProfileSummaryApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         scaffoldBackgroundColor: const Color.fromARGB(255, 24, 24, 24),
       ),
-      home: const ProfileSummaryScreen(),
+      home:
+          ProfileSummaryScreen(userId: userId), // Pass the actual user ID here
       debugShowCheckedModeBanner: false,
     );
   }
 }
 
 class ProfileSummaryScreen extends StatelessWidget {
-  const ProfileSummaryScreen({super.key});
+  final String userId;
+
+  const ProfileSummaryScreen({required this.userId, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +36,10 @@ class ProfileSummaryScreen extends StatelessWidget {
           icon: const Icon(Icons.arrow_back, color: Colors.white),
           onPressed: () {
             Navigator.of(context).pushAndRemoveUntil(
-              MaterialPageRoute(builder: (context) => const HomePage()),
+              MaterialPageRoute(
+                  builder: (context) => HomePage(
+                        userId: userId,
+                      )),
               (Route<dynamic> route) => false,
             );
           },
@@ -47,10 +53,8 @@ class ProfileSummaryScreen extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: FutureBuilder<DocumentSnapshot>(
-          future: FirebaseFirestore.instance
-              .collection('users')
-              .doc('USER_ID')
-              .get(),
+          future:
+              FirebaseFirestore.instance.collection('users').doc(userId).get(),
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return const Center(child: CircularProgressIndicator());
@@ -76,17 +80,17 @@ class ProfileSummaryScreen extends StatelessWidget {
                   buildProfileCard(
                     Icons.person,
                     "Full Name",
-                    userData['fullName'] ?? '',
+                    userData['full_name'] ?? '',
                   ),
                   buildProfileCard(
                     Icons.email,
                     "Email",
-                    userData['email'] ?? '',
+                    userData['email_address'] ?? '',
                   ),
                   buildProfileCard(
                     Icons.phone,
                     "Phone Number",
-                    userData['phoneNumber'] ?? '',
+                    userData['phone_number'] ?? '',
                   ),
                   const Spacer(),
                   Center(
