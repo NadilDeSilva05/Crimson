@@ -1,3 +1,4 @@
+import 'package:crimson/Health%20Tips/healthtips.dart';
 import 'package:crimson/Homepage/homepage.dart';
 import 'package:crimson/firebase_options.dart';
 import 'package:device_preview/device_preview.dart';

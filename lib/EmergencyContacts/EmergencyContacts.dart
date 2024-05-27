@@ -1,6 +1,8 @@
 // ignore_for_file: file_names
 
+import 'package:crimson/Homepage/homepage.dart';
 import 'package:flutter/material.dart';
+//import 'main.dart'; // Import the main.dart file where HomePage is defined
 
 class EmergencyContact extends StatelessWidget {
   const EmergencyContact({super.key});
@@ -14,6 +16,7 @@ class EmergencyContact extends StatelessWidget {
         scaffoldBackgroundColor: Colors.black,
       ),
       home: const EmergencyContactScreen(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
@@ -29,7 +32,10 @@ class EmergencyContactScreen extends StatelessWidget {
         leading: IconButton(
           icon: const Icon(Icons.arrow_back, color: Colors.white),
           onPressed: () {
-            Navigator.of(context).pop();
+            Navigator.of(context).pushAndRemoveUntil(
+              MaterialPageRoute(builder: (context) => const HomePage()),
+              (Route<dynamic> route) => false,
+            );
           },
         ),
         title: const Text('Emergency Contacts',
