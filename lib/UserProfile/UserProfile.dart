@@ -1,5 +1,6 @@
 // ignore_for_file: file_names
 
+import 'package:crimson/Homepage/homepage.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -15,6 +16,7 @@ class ProfileSummaryApp extends StatelessWidget {
         scaffoldBackgroundColor: const Color.fromARGB(255, 24, 24, 24),
       ),
       home: const ProfileSummaryScreen(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
@@ -30,7 +32,10 @@ class ProfileSummaryScreen extends StatelessWidget {
         leading: IconButton(
           icon: const Icon(Icons.arrow_back, color: Colors.white),
           onPressed: () {
-            Navigator.of(context).pop();
+            Navigator.of(context).pushAndRemoveUntil(
+              MaterialPageRoute(builder: (context) => const HomePage()),
+              (Route<dynamic> route) => false,
+            );
           },
         ),
         title: const Text(
